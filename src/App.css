@@ -1,0 +1,15 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.footer .btn {
+  width: 50% !important;
+}
+
+.App {
+  margin-top: 20px;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Customer-Web-App",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "4.1.1",
+    "bootstrap-sass-loader": "^1.0.10",
+    "history": "^4.7.2",
+    "lodash": "^4.17.10",
+    "react": "^16.4.0",
+    "react-block-ui": "^1.1.2",
+    "react-dom": "^16.4.0",
+    "react-facebook-pixel": "^0.1.1",
+    "react-ga": "^2.5.3",
+    "react-messenger-customer-chat": "^0.6.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.1.4",
+    "react-stripe-elements": "^2.0.1",
+    "reactstrap": "^6.4.0",
+    "redux": "^4.0.0",
+    "rxjs": "^5.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
