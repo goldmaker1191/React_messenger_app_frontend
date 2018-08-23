@@ -15,7 +15,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import withTracker from './components/ga/withTracker';
-import {GOOGLE_TRACK_ID, FACEBOOK_TRACK_ID, HOTJAR_TRACK_ID, HOTJAR_VERSION} from "./constanst";
+import {GOOGLE_TRACK_ID, FACEBOOK_TRACK_ID } from "./constanst";
 
 export const rootReducer = combineReducers({
   router: routerReducer

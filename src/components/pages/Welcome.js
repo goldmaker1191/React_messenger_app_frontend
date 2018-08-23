@@ -27,7 +27,7 @@ class Welcome extends PureComponent {
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
         if (features.indexOf("context") != -1) {
-          window.MessengerExtensions.getContext('1199034160165944',
+          window.MessengerExtensions.getContext('263902037430900',
             function success(thread_context) {
               // success
               this.setState({
