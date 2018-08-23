@@ -1,4 +1,7 @@
-// export const BACKEND_URL = 'http://localhost:3000';
+export const GOOGLE_TRACK_ID = 'UA-124533471-1'
+export const FACEBOOK_TRACK_ID = '288710468387517'
+export const HOTJAR_TRACK_ID = '990016'
+export const HOTJAR_VERSION = '6'
 export const BACKEND_URL = 'https://lamhong-nodejs-crud-demo.herokuapp.com';
 export const APP_ID = '226699394730535';
 export const APP_SECRET = 'e5362e41588fa23f2b07a2ba6cb77da8';

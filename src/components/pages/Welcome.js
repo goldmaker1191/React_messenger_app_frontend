@@ -6,12 +6,11 @@ import {
 import {Row, Col} from 'reactstrap';
 import { sha256 } from 'js-sha256';
 import Footer from '../footer/Footer'
-
 class Welcome extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-
+      psid: null
     };
   }
   componentDidMount() {
@@ -28,10 +27,12 @@ class Welcome extends PureComponent {
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
         if (features.indexOf("context") != -1) {
-          window.MessengerExtensions.getContext(APP_ID,
+          window.MessengerExtensions.getContext('1199034160165944',
             function success(thread_context) {
               // success
-              document.getElementById("psid").value = thread_context.psid;
+              this.setState({
+                psid: thread_context.psid
+              })
               // More code to follow
             },
             function error(err) {
@@ -46,16 +47,13 @@ class Welcome extends PureComponent {
   }
 
   render() {
+    const {
+      psid
+    } = this.state;
     return (
       <Row>
         <Col>
-          {/*<button*/}
-            {/*classNames = "btn-facebook"*/}
-            {/*id         = "btn-social-login"*/}
-            {/*onClick={() => this.handleFBLogin()}*/}
-          {/*>*/}
-            {/*<span className="fa fa-facebook"></span> Sign in with Facebook*/}
-          {/*</button>*/}
+          <h3> Messenger ID:  {psid} </h3>
         </Col>
         <Footer to="/options"/>
       </Row>

@@ -1,8 +1,30 @@
 import React, { PureComponent } from 'react';
+import ReactGA from 'react-ga';
 import { Row, Col, Button, Form, FormGroup, Label, Input, CustomInput, InputGroupAddon, InputGroup } from 'reactstrap';
 import Footer from '../footer/Footer'
 
 class PaymentOptions extends PureComponent {
+  constructor(props) {
+    super(props);
+
+  }
+
+  handleOnCheckClick = () => {
+    ReactGA.event({
+      category: 'button',
+      action: 'check',
+      label: 'Check Button'
+    });
+  }
+
+  handleSubmitClick = () => {
+    ReactGA.event({
+      category: 'PaymentOptions',
+      action: 'submit',
+      label: 'Summit Button'
+    });
+  }
+
   render() {
     return (
       <Row>
@@ -13,7 +35,7 @@ class PaymentOptions extends PureComponent {
                   <InputGroup>
                     <Input type="text" name="name" placeholder="Name" />                  
                     <InputGroupAddon addonType="append">
-                      <Button type="button" color="secondary">Check</Button>
+                      <Button type="button" color="secondary" onClick={() => this.handleOnCheckClick()}>Check</Button>
                     </InputGroupAddon>
                   </InputGroup>
                 </Col>
@@ -26,7 +48,7 @@ class PaymentOptions extends PureComponent {
               </FormGroup>
               <FormGroup check row>
                 <Col className="text-center">
-                  <Button type="button">Submit</Button>
+                  <Button type="button" onClick={() => this.handleSubmitClick()}>Submit</Button>
                 </Col>
               </FormGroup>
             </Form>
