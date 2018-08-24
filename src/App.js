@@ -35,9 +35,9 @@ ReactPixel.init(FACEBOOK_TRACK_ID, '', {
 
 ReactGA.initialize({
   trackingId: 'UA-124533471-1',
-  debug: false,
-  require: 'GTM-PTCRRT8'
+  debug: false
 });
+ReactGA.ga('require', 'GTM-PTCRRT8');
 
 class App extends PureComponent {
   render() {
