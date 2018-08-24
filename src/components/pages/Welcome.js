@@ -47,6 +47,33 @@ class Welcome extends PureComponent {
     //     alert('error');
     //   });
     // };
+    window.extAsyncInit = function() {
+      alert('extAsyncInit');
+      // the Messenger Extensions JS SDK is done loading
+      window.MessengerExtensions.getSupportedFeatures(function success(result) {
+        let features = result.supported_features;
+        alert('result', result);
+        if (features.indexOf("context") != -1) {
+          window.MessengerExtensions.getContext('1199034160165944',
+            function success(thread_context) {
+              // success
+              console.log('psid:' + thread_context.psid);
+              alert('thread_context.psid');
+              this.setState({
+                psid: thread_context.psid
+              })
+              // More code to follow
+            },
+            function error(err) {
+              console.log(err);
+              alert('error');
+            }
+          );
+        }
+      }, function error(err) {
+        alert('error');
+      });
+    };
   }
 
   render() {
