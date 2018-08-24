@@ -26,36 +26,29 @@ class Welcome extends PureComponent {
     });
     window.extAsyncInit = function() {
       // the Messenger Extensions JS SDK is done loading
-      this.setState({
-        psid: `result: extAsyncInit`
-      });
+      document.getElementById('psidValue').innerHTML += 'extAsyncInit';
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
-        this.setState({
-          psid: `result: ${result}`
-        });
+        // this.setState({
+        //   psid: `result: ${result}`
+        // });
+        document.getElementById('psidValue').innerHTML += result;
         if (features.indexOf("context") != -1) {
           window.MessengerExtensions.getContext('1199034160165944',
             function success(thread_context) {
               // success
-              this.setState({
-                psid: thread_context.psid
-              })
+              document.getElementById('psidValue').innerHTML += thread_context.psid;
               // More code to follow
             },
             function error(err) {
               console.log(err);
-              this.setState({
-                psid: `ERROR: ${err}`
-              })
+              document.getElementById('psidValue').innerHTML += `ERROR: ${err}`;
             }
           );
         }
       }, function error(err) {
         console.log(err);
-        this.setState({
-          psid: `ERROR: ${err}`
-        })
+        document.getElementById('psidValue').innerHTML += `ERROR: ${err}`;
       });
     };
   }
@@ -67,7 +60,7 @@ class Welcome extends PureComponent {
     return (
       <Row>
         <Col>
-          <h3> Messenger ID:  {psid} </h3>
+          <h3 id="psidValue"> Messenger ID:  </h3>
         </Col>
         <Footer to="/options"/>
       </Row>
