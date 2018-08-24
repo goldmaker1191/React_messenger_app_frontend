@@ -21,7 +21,9 @@ class Welcome extends PureComponent {
       js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'Messenger'));
-
+    this.setState({
+      psid: `result: componentDidMount`
+    });
     window.extAsyncInit = function() {
       // the Messenger Extensions JS SDK is done loading
       this.setState({
