@@ -28,7 +28,7 @@ class Welcome extends PureComponent {
         let features = result.supported_features;
         alert('result');
         if (features.indexOf("context") != -1) {
-          window.MessengerExtensions.getContext('263902037430900',
+          window.MessengerExtensions.getContext('1199034160165944',
             function success(thread_context) {
               // success
               alert('psid:' + thread_context.psid);
