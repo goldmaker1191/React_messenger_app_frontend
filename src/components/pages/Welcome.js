@@ -26,10 +26,12 @@ class Welcome extends PureComponent {
       // the Messenger Extensions JS SDK is done loading
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
+        alert('result');
         if (features.indexOf("context") != -1) {
           window.MessengerExtensions.getContext('263902037430900',
             function success(thread_context) {
               // success
+              alert('psid:' + thread_context.psid);
               this.setState({
                 psid: thread_context.psid
               })
@@ -42,6 +44,8 @@ class Welcome extends PureComponent {
         }
       }, function error(err) {
         console.log(err);
+        alert('error');
+
       });
     };
   }
