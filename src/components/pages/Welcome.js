@@ -1,24 +1,25 @@
 /* eslint-disable */
 import React, {PureComponent} from 'react';
-import {
-  APP_ID, PAGE_ID, APP_SECRET, PAGE_ACCESS_TOKEN
-} from '../../constanst'
-import {Row, Col} from 'reactstrap';
-import { sha256 } from 'js-sha256';
+import {Col, Row, UncontrolledAlert} from 'reactstrap';
 import Footer from '../footer/Footer'
+
 class Welcome extends PureComponent {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
-    (function(d, s, id){
+    (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id;
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
       js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'Messenger'));
-    window.extAsyncInit = function() {
+    window.extAsyncInit = function () {
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
         if (features.indexOf("context") != -1) {
@@ -44,6 +45,9 @@ class Welcome extends PureComponent {
           <h3 id="psidValue"></h3>
         </Col>
         <Footer to="/options"/>
+        <UncontrolledAlert color="info" className="cookie-popup">
+          This website is using cookies.
+        </UncontrolledAlert>
       </Row>
     );
   }

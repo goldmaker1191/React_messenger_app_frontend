@@ -27,7 +27,8 @@ const store = createStore(rootReducer,
     applyMiddleware(routerMiddlewareRedux)
   )
 )
-
+// todo: check production or stateging https://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack
+// https://stackoverflow.com/questions/35469836/detecting-production-vs-development-react-at-runtime
 ReactPixel.init(FACEBOOK_TRACK_ID, '', {
   autoConfig: true,
   debug: false,

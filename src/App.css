@@ -1,7 +1,15 @@
 .footer {
   position: fixed;
   left: 0;
-  bottom: 20px;
+  bottom: 100px;
+  text-align: center;
+  width: 100%;
+}
+
+.cookie-popup {
+  position: fixed;
+  left: 0;
+  bottom: 0px;
   text-align: center;
   width: 100%;
 }
