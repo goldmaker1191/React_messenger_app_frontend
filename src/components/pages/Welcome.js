@@ -14,51 +14,25 @@ class Welcome extends PureComponent {
     };
   }
   componentDidMount() {
-    // (function(d, s, id){
-    //   var js, fjs = d.getElementsByTagName(s)[0];
-    //   if (d.getElementById(id)) {return;}
-    //   js = d.createElement(s); js.id = id;
-    //   js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
-    //   fjs.parentNode.insertBefore(js, fjs);
-    // }(document, 'script', 'Messenger'));
-    //
-    // window.extAsyncInit = function() {
-    //   // the Messenger Extensions JS SDK is done loading
-    //   window.MessengerExtensions.getSupportedFeatures(function success(result) {
-    //     let features = result.supported_features;
-    //     alert('result');
-    //     if (features.indexOf("context") != -1) {
-    //       window.MessengerExtensions.getContext('1199034160165944',
-    //         function success(thread_context) {
-    //           // success
-    //           alert('psid:' + thread_context.psid);
-    //           this.setState({
-    //             psid: thread_context.psid
-    //           })
-    //           // More code to follow
-    //         },
-    //         function error(err) {
-    //           console.log(err);
-    //         }
-    //       );
-    //     }
-    //   }, function error(err) {
-    //     console.log(err);
-    //     alert('error');
-    //   });
-    // };
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+
     window.extAsyncInit = function() {
-      alert('extAsyncInit');
       // the Messenger Extensions JS SDK is done loading
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
-        alert('result', result);
+        this.setState({
+          psid: `result: ${result}`
+        });
         if (features.indexOf("context") != -1) {
           window.MessengerExtensions.getContext('1199034160165944',
             function success(thread_context) {
               // success
-              console.log('psid:' + thread_context.psid);
-              alert('thread_context.psid');
               this.setState({
                 psid: thread_context.psid
               })
@@ -66,12 +40,14 @@ class Welcome extends PureComponent {
             },
             function error(err) {
               console.log(err);
-              alert('error');
             }
           );
         }
       }, function error(err) {
-        alert('error');
+        console.log(err);
+        this.setState({
+          psid: `ERROR: ${err}`
+        })
       });
     };
   }
