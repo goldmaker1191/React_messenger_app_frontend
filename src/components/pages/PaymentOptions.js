@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import ReactGA from 'react-ga';
-import { Row, Col, Button, Form, FormGroup, Label, Input, CustomInput, InputGroupAddon, InputGroup } from 'reactstrap';
+import {Button, Col, CustomInput, Form, FormGroup, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 import Footer from '../footer/Footer'
 
 class PaymentOptions extends PureComponent {
@@ -18,43 +18,43 @@ class PaymentOptions extends PureComponent {
   }
 
   handleSubmitClick = () => {
-    ReactGA.event({
-      category: 'PaymentOptions',
-      action: 'submit',
+    this.props.trackEvent({
+      category: 'PaymentCard',
+      action: 'summit',
       label: 'Summit Button'
     });
-  }
+  };
 
   render() {
     return (
       <Row>
         <Col>
           <Form>
-              <FormGroup row>
-                <Col>
-                  <InputGroup>
-                    <Input type="text" name="name" placeholder="Name" />                  
-                    <InputGroupAddon addonType="append">
-                      <Button type="button" color="secondary" onClick={() => this.handleOnCheckClick()}>Check</Button>
-                    </InputGroupAddon>
-                  </InputGroup>
-                </Col>
-              </FormGroup>
-              <FormGroup>
-                <div>
-                  <CustomInput type="radio" name="paymentType" label="Card" />
-                  <CustomInput type="radio" name="paymentType" label="Paypal" />
-                </div>
-              </FormGroup>
-              <FormGroup check row>
-                <Col className="text-center">
-                  <Button type="button" onClick={() => this.handleSubmitClick()}>Submit</Button>
-                </Col>
-              </FormGroup>
-            </Form>
-            <Footer to="/cards"/>
+            <FormGroup row>
+              <Col>
+                <InputGroup>
+                  <Input type="text" name="name" placeholder="Name"/>
+                  <InputGroupAddon addonType="append">
+                    <Button type="button" color="secondary" onClick={() => this.handleOnCheckClick()}>Check</Button>
+                  </InputGroupAddon>
+                </InputGroup>
+              </Col>
+            </FormGroup>
+            <FormGroup>
+              <div>
+                <CustomInput type="radio" name="paymentType" label="Card"/>
+                <CustomInput type="radio" name="paymentType" label="Paypal"/>
+              </div>
+            </FormGroup>
+            <FormGroup check row>
+              <Col className="text-center">
+                <Button type="button" onClick={() => this.handleSubmitClick()}>Submit</Button>
+              </Col>
+            </FormGroup>
+          </Form>
+          <Footer to="/cards"/>
         </Col>
-      </Row> 
+      </Row>
     );
   }
 }

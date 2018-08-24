@@ -1,24 +1,16 @@
 import React, {PureComponent} from 'react';
-import ReactGA from 'react-ga';
-import ReactPixel from 'react-facebook-pixel';
-import {Row, Col, Button, Form, FormGroup, Label, Input, CustomInput} from 'reactstrap';
+import {Button, Col, Form, FormGroup, Input, Row} from 'reactstrap';
 import Footer from '../footer/Footer'
 
 class PaymentCards extends PureComponent {
 
   handleSubmitClick = () => {
-    ReactPixel.track('event', {
-      category: 'PaymentCard',
-      action: 'summit',
-      label: 'Summit Button'
-    }) 		// For tracking default events, more info about events and data https://developers.facebook.com/docs/ads-for-websites/pixel-events/v2.9
-    // ReactPixel.trackCustom( event, data )
-    ReactGA.event({
+    this.props.trackEvent({
       category: 'PaymentCard',
       action: 'summit',
       label: 'Summit Button'
     });
-  }
+  };
 
   render() {
     return (

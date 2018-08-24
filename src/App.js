@@ -1,21 +1,18 @@
 import React, {PureComponent} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {createStore, applyMiddleware, compose} from 'redux';
-import {combineReducers} from 'redux';
+import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux';
+import {ConnectedRouter, routerMiddleware, routerReducer} from 'react-router-redux';
 import createHistory from "history/createBrowserHistory";
 import ReactGA from 'react-ga';
 import ReactPixel from 'react-facebook-pixel';
 
-import {Container, Row, Col} from 'reactstrap';
-import {
-  Welcome, PaymentCards, PaymentOptions, PaymentSuccess
-} from './components/pages'
+import {Col, Container, Row} from 'reactstrap';
+import {PaymentCards, PaymentOptions, PaymentSuccess, Welcome} from './components/pages'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import withTracker from './components/ga/withTracker';
-import {GOOGLE_TRACK_ID, FACEBOOK_TRACK_ID } from "./constanst";
+import {FACEBOOK_TRACK_ID} from "./constanst";
 
 export const rootReducer = combineReducers({
   router: routerReducer
@@ -32,7 +29,7 @@ const store = createStore(rootReducer,
 )
 
 ReactPixel.init(FACEBOOK_TRACK_ID, '', {
-  autoConfig: true, 	// set pixel's autoConfig
+  autoConfig: true,
   debug: false,
 });
 

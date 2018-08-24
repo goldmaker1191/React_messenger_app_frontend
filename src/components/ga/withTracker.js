@@ -32,8 +32,13 @@ export default function withTracker(WrappedComponent, options = {}) {
       }
     }
 
+    trackEvent({category, action, label}) {
+      ReactPixel.track('event', {category, action, label});
+      ReactGA.event({category, action, label});
+    }
+
     render() {
-      return <WrappedComponent {...this.props} />;
+      return <WrappedComponent {...this.props} trackEvent={this.trackEvent}/>;
     }
   };
 

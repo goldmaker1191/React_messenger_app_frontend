@@ -9,9 +9,6 @@ import Footer from '../footer/Footer'
 class Welcome extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      psid: null
-    };
   }
   componentDidMount() {
     (function(d, s, id){
@@ -21,46 +18,30 @@ class Welcome extends PureComponent {
       js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'Messenger'));
-    this.setState({
-      psid: `result: componentDidMount`
-    });
     window.extAsyncInit = function() {
-      // the Messenger Extensions JS SDK is done loading
-      document.getElementById('psidValue').innerHTML += 'extAsyncInit';
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
-        // this.setState({
-        //   psid: `result: ${result}`
-        // });
-        document.getElementById('psidValue').innerHTML += result;
         if (features.indexOf("context") != -1) {
           window.MessengerExtensions.getContext('1199034160165944',
             function success(thread_context) {
-              // success
-              document.getElementById('psidValue').innerHTML += thread_context.psid;
-              // More code to follow
+              document.getElementById('psidValue').innerHTML = `Messenger ID: ${thread_context.psid}`;
             },
             function error(err) {
-              console.log(err);
-              document.getElementById('psidValue').innerHTML += `ERROR: ${err}`;
+              document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
             }
           );
         }
       }, function error(err) {
-        console.log(err);
-        document.getElementById('psidValue').innerHTML += `ERROR: ${err}`;
+        document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
       });
     };
   }
 
   render() {
-    const {
-      psid
-    } = this.state;
     return (
       <Row>
         <Col>
-          <h3 id="psidValue"> Messenger ID:  </h3>
+          <h3 id="psidValue"></h3>
         </Col>
         <Footer to="/options"/>
       </Row>
