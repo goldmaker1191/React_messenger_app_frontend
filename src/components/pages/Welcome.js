@@ -24,6 +24,9 @@ class Welcome extends PureComponent {
 
     window.extAsyncInit = function() {
       // the Messenger Extensions JS SDK is done loading
+      this.setState({
+        psid: `result: extAsyncInit`
+      });
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
         this.setState({
@@ -40,6 +43,9 @@ class Welcome extends PureComponent {
             },
             function error(err) {
               console.log(err);
+              this.setState({
+                psid: `ERROR: ${err}`
+              })
             }
           );
         }
