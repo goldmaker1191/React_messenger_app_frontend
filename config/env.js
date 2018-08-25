@@ -85,9 +85,17 @@ function getClientEnvironment(publicUrl) {
       env[key] = JSON.stringify(raw[key]);
       return env;
     }, {}),
-    HOTJAR_TRACK_ID: JSON.stringify("990016"),
-    HOTJAR_VERSION: JSON.stringify("6"),
-    GOOGLE_OPTIMIZE_CONTAINER_ID: 'GTM-PTCRRT8',
+    CONFIG: JSON.stringify({
+      HOTJAR_TRACK_ID: '990016',
+      HOTJAR_VERSION: '6',
+      GOOGLE_OPTIMIZE_CONTAINER_ID: 'GTM-PTCRRT8',
+      GOOGLE_TRACK_ID: 'UA-124533471-1',
+      FACEBOOK_TRACK_ID: '288710468387517',
+      STRIPE_KEY: 'pk_test_QHwSBRXAbcgdgrHjI6WVM88B',
+      STRIPE_SECRET_KEY: 'sk_test_huciaEWexT3yYfYY0BzgLkKy',
+      FB_APP_ID: '1199034160165944',
+      PAYPAL_SANBOX_ID: 'AQ6p5mZNiTJIF13P3jG54Kl2ShBjK7uJ50-Tu0yM2-wQ4EgT2olEcjdaFCu5lANk4weufmUyEOiZ3teM',
+    })
   };
 
   return { raw, stringified };

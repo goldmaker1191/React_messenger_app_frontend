@@ -11,10 +11,7 @@ import {PaymentCards, PaymentOptions, PaymentSuccess, Welcome} from './component
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import withTracker from './components/ga/withTracker';
-import {
-  FACEBOOK_TRACK_ID, GOOGLE_OPTIMIZE_CONTAINER_ID, GOOGLE_TRACK_ID, HOTJAR_TRACK_ID,
-  HOTJAR_VERSION
-} from "./constanst";
+import {FACEBOOK_TRACK_ID, GOOGLE_OPTIMIZE_CONTAINER_ID, GOOGLE_TRACK_ID} from "./constanst";
 
 export const rootReducer = combineReducers({
   router: routerReducer
@@ -30,33 +27,17 @@ const store = createStore(rootReducer,
   )
 )
 
+ReactPixel.init(FACEBOOK_TRACK_ID, '', {
+  autoConfig: true,
+  debug: false,
+});
+ReactGA.initialize({
+  trackingId: GOOGLE_TRACK_ID,
+  debug: false
+});
+ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTAINER_ID);
+
 class App extends PureComponent {
-  componentWillMount() {
-    (function (h, o, t, j, a, r) {
-      h.hj = h.hj || function () {
-        (h.hj.q = h.hj.q || []).push(arguments)
-      };
-      h._hjSettings = {hjid: HOTJAR_TRACK_ID, hjsv: HOTJAR_VERSION};
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script');
-      r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-  }
-
-  componentDidMount() {
-    ReactPixel.init(FACEBOOK_TRACK_ID, '', {
-      autoConfig: true,
-      debug: false,
-    });
-    ReactGA.initialize({
-      trackingId: GOOGLE_TRACK_ID,
-      debug: false
-    });
-    ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTAINER_ID);
-  }
-
   render() {
     return (
       <Provider store={store}>
