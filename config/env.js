@@ -85,6 +85,10 @@ function getClientEnvironment(publicUrl) {
       env[key] = JSON.stringify(raw[key]);
       return env;
     }, {}),
+    HOTJAR_TRACK_ID: JSON.stringify("990016"),
+    HOTJAR_VERSION: JSON.stringify("6"),
+    GOOGLE_OPTIMIZE_CONTANINER_OPTION: JSON.stringify({'GTM-PTCRRT8': true}),
+    // GOOGLE_OPTIMIZE_CONTANINER_OPTION: JSON.stringify({'GTM-PTCRRT8': true}),
   };
 
   return { raw, stringified };

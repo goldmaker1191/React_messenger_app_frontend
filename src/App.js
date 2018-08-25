@@ -12,7 +12,10 @@ import {PaymentCards, PaymentOptions, PaymentSuccess, Welcome} from './component
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import withTracker from './components/ga/withTracker';
-import {FACEBOOK_TRACK_ID, GOOGLE_OPTIMIZE_CONTANINER_ID, GOOGLE_TRACK_ID} from "./constanst";
+import {
+  FACEBOOK_TRACK_ID, GOOGLE_OPTIMIZE_CONTANINER_ID, GOOGLE_TRACK_ID, HOTJAR_TRACK_ID,
+  HOTJAR_VERSION
+} from "./constanst";
 
 export const rootReducer = combineReducers({
   router: routerReducer
@@ -27,20 +30,34 @@ const store = createStore(rootReducer,
     applyMiddleware(routerMiddlewareRedux)
   )
 )
-// todo: check production or stateging https://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack
-// https://stackoverflow.com/questions/35469836/detecting-production-vs-development-react-at-runtime
-ReactPixel.init(FACEBOOK_TRACK_ID, '', {
-  autoConfig: true,
-  debug: false,
-});
-
-ReactGA.initialize({
-  trackingId: GOOGLE_TRACK_ID,
-  debug: false
-});
-ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTANINER_ID);
-
 class App extends PureComponent {
+  componentWillMount() {
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:HOTJAR_TRACK_ID,hjsv:HOTJAR_VERSION};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+      h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+      (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+    })(window,document.documentElement,'async-hide','dataLayer',4000,
+      {[GOOGLE_OPTIMIZE_CONTANINER_ID]: true});
+  }
+  componentDidMount() {
+    ReactPixel.init(FACEBOOK_TRACK_ID, '', {
+      autoConfig: true,
+      debug: false,
+    });
+
+    ReactGA.initialize({
+      trackingId: GOOGLE_TRACK_ID,
+      debug: false
+    });
+    ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTANINER_ID);
+  }
   render() {
     return (
       <Provider store={store}>
