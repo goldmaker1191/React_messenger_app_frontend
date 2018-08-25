@@ -40,11 +40,6 @@ class App extends PureComponent {
       r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
       a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-      h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-      (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-    })(window,document.documentElement,'async-hide','dataLayer',4000,
-      {[GOOGLE_OPTIMIZE_CONTANINER_ID]: true});
   }
   componentDidMount() {
     ReactPixel.init(FACEBOOK_TRACK_ID, '', {
@@ -52,11 +47,11 @@ class App extends PureComponent {
       debug: false,
     });
 
-    ReactGA.initialize({
-      trackingId: GOOGLE_TRACK_ID,
-      debug: false
-    });
-    ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTANINER_ID);
+    // ReactGA.initialize({
+    //   trackingId: GOOGLE_TRACK_ID,
+    //   debug: false
+    // });
+    // ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTANINER_ID);
   }
   render() {
     return (
