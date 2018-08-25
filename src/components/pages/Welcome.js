@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, {PureComponent} from 'react';
-import {Col, Row, UncontrolledAlert} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 import Footer from '../footer/Footer'
+import {FB_APP_ID} from "../../constanst";
 
 class Welcome extends PureComponent {
   constructor(props) {
@@ -23,7 +24,7 @@ class Welcome extends PureComponent {
       window.MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
         if (features.indexOf("context") != -1) {
-          window.MessengerExtensions.getContext('1199034160165944',
+          window.MessengerExtensions.getContext(FB_APP_ID,
             function success(thread_context) {
               document.getElementById('psidValue').innerHTML = `Messenger ID: ${thread_context.psid}`;
             },
@@ -44,10 +45,7 @@ class Welcome extends PureComponent {
         <Col>
           <h3 id="psidValue"></h3>
         </Col>
-        <Footer to="/options"/>
-        <UncontrolledAlert color="info" className="cookie-popup">
-          This website is using cookies.
-        </UncontrolledAlert>
+        <Footer to="/options" showCookieMsg/>
       </Row>
     );
   }

@@ -1,23 +1,30 @@
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 100px;
-  text-align: center;
-  width: 100%;
-}
-
-.cookie-popup {
-  position: fixed;
-  left: 0;
-  bottom: 0px;
-  text-align: center;
-  width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 5px;
+    text-align: center;
+    width: 100%;
 }
 
 .footer .btn {
-  width: 200px !important;
+    width: 200px !important;
+}
+.footer .cookie-popup {
+    margin-top: 20px;
 }
 
 .App {
-  margin-top: 20px;
+    margin-top: 20px;
 }
+
+.paymenttype-wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.paymenttype-wrapper > div {
+    margin-right: 20px;
+}
+

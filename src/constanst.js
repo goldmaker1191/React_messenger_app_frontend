@@ -1,9 +1,15 @@
-export const GOOGLE_TRACK_ID = 'UA-124533471-1'
+export const GOOGLE_TRACK_ID = 'UA-124533471-1';
+export const GOOGLE_OPTIMIZE_CONTANINER_ID = 'GTM-PTCRRT8';
 export const FACEBOOK_TRACK_ID = '288710468387517'
 export const HOTJAR_TRACK_ID = '990016'
 export const HOTJAR_VERSION = '6'
 export const BACKEND_URL = 'https://lamhong-nodejs-crud-demo.herokuapp.com';
-export const APP_ID = '226699394730535';
-export const APP_SECRET = 'e5362e41588fa23f2b07a2ba6cb77da8';
-export const PAGE_ID = '235798967129347';
-export const PAGE_ACCESS_TOKEN = 'EAADOLpDkyicBAFj0XmsHkYZBngBEIm9V6DnnZCPY5VbvbHZC5S3zvPM2OUkOGYckrFio6orAGYOqxjv0xZAd2YfvZA8J7RoZBZCZBNBwFn9mSPXeZAYkgVEl57WX1zVReUqnFA1UfwAm4Aj2GssJDDlwc3reQCGJUj4ldPiv5Fv8fhSSZBdAAMqZCfK';
+export const FB_APP_ID = '1199034160165944';
+export const PAYMENT_TYPE = {
+  PAYPAL: 'paypal',
+  CARD: 'card',
+}
+export const PAYPAL_SANBOX_ID = 'AQ6p5mZNiTJIF13P3jG54Kl2ShBjK7uJ50-Tu0yM2-wQ4EgT2olEcjdaFCu5lANk4weufmUyEOiZ3teM';
+export const PAYPAL_PRO_ID = '';
+export const STRIPE_KEY = 'pk_test_QHwSBRXAbcgdgrHjI6WVM88B';
+export const STRIPE_SECRET_KEY = 'sk_test_huciaEWexT3yYfYY0BzgLkKy';

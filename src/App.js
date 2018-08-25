@@ -12,7 +12,7 @@ import {PaymentCards, PaymentOptions, PaymentSuccess, Welcome} from './component
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import withTracker from './components/ga/withTracker';
-import {FACEBOOK_TRACK_ID} from "./constanst";
+import {FACEBOOK_TRACK_ID, GOOGLE_OPTIMIZE_CONTANINER_ID, GOOGLE_TRACK_ID} from "./constanst";
 
 export const rootReducer = combineReducers({
   router: routerReducer
@@ -35,10 +35,10 @@ ReactPixel.init(FACEBOOK_TRACK_ID, '', {
 });
 
 ReactGA.initialize({
-  trackingId: 'UA-124533471-1',
+  trackingId: GOOGLE_TRACK_ID,
   debug: false
 });
-ReactGA.ga('require', 'GTM-PTCRRT8');
+ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTANINER_ID);
 
 class App extends PureComponent {
   render() {
