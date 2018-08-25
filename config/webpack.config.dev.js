@@ -220,6 +220,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+      GOOGLE_OPTIMIZE_CONTAINER_ID: 'GTM-PTCRRT8',
     }),
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),

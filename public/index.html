@@ -27,7 +27,7 @@
         h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
       })(window,document.documentElement,'async-hide','dataLayer',4000,
-        {'GTM-PTCRRT8': true});
+        {<%= JSON.stringify(htmlWebpackPlugin.options.GOOGLE_OPTIMIZE_CONTAINER_ID) %>: true});
     </script>
     <script src="https://js.stripe.com/v3/"></script>
   </head>
@@ -36,7 +36,6 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root">
-
     </div>
     <!--
       This HTML file is a template.
