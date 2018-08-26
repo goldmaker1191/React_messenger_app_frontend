@@ -31,6 +31,7 @@ ReactPixel.init(FACEBOOK_TRACK_ID, '', {
   autoConfig: true,
   debug: false,
 });
+
 ReactGA.initialize({
   trackingId: GOOGLE_TRACK_ID,
   debug: false

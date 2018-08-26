@@ -93,7 +93,7 @@ function getClientEnvironment(publicUrl) {
       FACEBOOK_TRACK_ID: '288710468387517',
       STRIPE_KEY: 'pk_test_QHwSBRXAbcgdgrHjI6WVM88B',
       STRIPE_SECRET_KEY: 'sk_test_huciaEWexT3yYfYY0BzgLkKy',
-      FB_APP_ID: '1199034160165944',
+      FB_APP_ID: '226699394730535',
       PAYPAL_SANBOX_ID: 'AQ6p5mZNiTJIF13P3jG54Kl2ShBjK7uJ50-Tu0yM2-wQ4EgT2olEcjdaFCu5lANk4weufmUyEOiZ3teM',
     })
   };
