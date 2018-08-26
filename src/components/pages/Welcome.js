@@ -10,18 +10,24 @@ class Welcome extends PureComponent {
   }
 
   componentDidMount() {
-    MessengerExtensions.getSupportedFeatures(function success(result) {
-      let features = result.supported_features;
-      if (features.indexOf("context") != -1) {
-        window.MessengerExtensions.getContext(FB_APP_ID,
-          function success(thread_context) {
-            document.getElementById('psidValue').innerHTML = `Messenger ID: ${thread_context.psid}`;
-          },
-          function error(err) {
-            document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
-          }
-        );
-      }
+    // MessengerExtensions.getSupportedFeatures(function success(result) {
+    //   let features = result.supported_features;
+    //   if (features.indexOf("context") != -1) {
+    //     window.MessengerExtensions.getContext(FB_APP_ID,
+    //       function success(thread_context) {
+    //         document.getElementById('psidValue').innerHTML = `Messenger ID: ${thread_context.psid}`;
+    //       },
+    //       function error(err) {
+    //         document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
+    //       }
+    //     );
+    //   }
+    //
+    // }, function error(err) {
+    //   document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
+    // });
+    window.MessengerExtensions.getUserID(function success(uids) {
+      document.getElementById('psidValue').innerHTML = `Messenger ID: ${uids.psid}`;
     }, function error(err) {
       document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
     });
