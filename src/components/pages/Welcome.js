@@ -29,12 +29,12 @@ class Welcome extends PureComponent {
               document.getElementById('psidValue').innerHTML = `Messenger ID: ${thread_context.psid}`;
             },
             function error(err) {
-              document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
+              document.getElementById('psidValue').innerHTML = `ERROR: Get context ${err}`;
             }
           );
         }
       }, function error(err) {
-        document.getElementById('psidValue').innerHTML = `ERROR: ${err}`;
+        document.getElementById('psidValue').innerHTML = `ERROR: Not support ${err}`;
       });
     };
   }
