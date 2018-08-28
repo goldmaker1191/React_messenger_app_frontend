@@ -86,11 +86,11 @@ function getClientEnvironment(publicUrl) {
       return env;
     }, {}),
     CONFIG: JSON.stringify({
-      HOTJAR_TRACK_ID: '990016',
+      HOTJAR_TRACK_ID: '987050',
       HOTJAR_VERSION: '6',
-      GOOGLE_OPTIMIZE_CONTAINER_ID: 'GTM-PTCRRT8',
-      GOOGLE_TRACK_ID: 'UA-124533471-1',
-      FACEBOOK_TRACK_ID: '288710468387517',
+      GOOGLE_OPTIMIZE_CONTAINER_ID: 'GTM-543J2FS',
+      GOOGLE_TRACK_ID: 'UA-79878595-4',
+      FACEBOOK_TRACK_ID: '309680483131713',
       STRIPE_KEY: 'pk_test_QHwSBRXAbcgdgrHjI6WVM88B',
       STRIPE_SECRET_KEY: 'sk_test_huciaEWexT3yYfYY0BzgLkKy',
       FB_APP_ID: '1199034160165944',
