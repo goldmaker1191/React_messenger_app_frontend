@@ -109,7 +109,7 @@ class PaymentStripeRequestForm extends React.Component {
           />
         </label>
         <div className="action">
-          <button>Pay</button>
+          <button>Payment Request</button>
         </div>
       </form>
     )

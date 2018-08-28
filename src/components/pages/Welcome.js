@@ -29,12 +29,12 @@ class Welcome extends PureComponent {
               document.getElementById('psidValue').innerHTML = `Messenger ID: ${thread_context.psid}`;
             },
             function error(err) {
-              document.getElementById('psidValue').innerHTML = `ERROR: Get context ${err}`;
+              // document.getElementById('psidValue').innerHTML = `ERROR: Get context ${err}`;
             }
           );
         }
       }, function error(err) {
-        document.getElementById('psidValue').innerHTML = `ERROR: Not support ${err}`;
+        // document.getElementById('psidValue').innerHTML = `ERROR: Not support ${err}`;
       });
     };
   }
@@ -43,7 +43,7 @@ class Welcome extends PureComponent {
     return (
       <Row>
         <Col>
-          <h3 id="psidValue"></h3>
+          <h3 id="psidValue"> Messenger ID: </h3>
         </Col>
         <Footer to="/options" showCookieMsg/>
       </Row>

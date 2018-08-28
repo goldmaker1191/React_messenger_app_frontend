@@ -4,6 +4,7 @@ import {Button, Col, CustomInput, Form, FormGroup, Input, InputGroup, InputGroup
 import {PAYMENT_TYPE} from '../../constanst'
 import PaypalExpressBtn from '../paypal/PaypalButton'
 import PaymentCards from './PaymentCards'
+import Footer from '../footer/Footer'
 
 class PaymentOptions extends PureComponent {
   constructor(props) {
@@ -93,12 +94,15 @@ class PaymentOptions extends PureComponent {
                              checked={paymentType === PAYMENT_TYPE.PAYPAL}
                              onChange={() => this.handleOnRadioChange(PAYMENT_TYPE.PAYPAL)}
                              label="Paypal"/>
-                {paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}
               </div>
             </FormGroup>
+            <div style={{textAlign: 'center'}}>
+              {paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}
+            </div>
             {paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props}/>}
           </Form>
         </Col>
+        <Footer to="/cards" showCookieMsg/>
       </Row>
     );
   }

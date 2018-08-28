@@ -9,6 +9,10 @@
 .footer .btn {
     width: 200px !important;
 }
+.footer a:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
+}
 .footer .cookie-popup {
     margin-top: 20px;
 }
