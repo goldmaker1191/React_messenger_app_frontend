@@ -37,7 +37,7 @@ ReactGA.initialize({
   debug: false
 });
 ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTAINER_ID);
-
+console.log('process.env', process.env);
 class App extends PureComponent {
   render() {
     return (
