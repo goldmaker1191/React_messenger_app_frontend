@@ -59,9 +59,9 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .map(folder => path.resolve(appDirectory, folder))
   .join(path.delimiter);
 
-// Grab NODE_ENV and CUSTOMER_REACT_APP_* environment variables and prepare them to be
+// Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
 // injected into the application via DefinePlugin in Webpack configuration.
-const REACT_APP = /^CUSTOMER_REACT_APP_/i;
+const REACT_APP = /^REACT_APP_/i;
 
 function getClientEnvironment(publicUrl) {
   const raw = Object.keys(process.env)
@@ -89,16 +89,15 @@ function getClientEnvironment(publicUrl) {
       return env;
     }, {}),
     CONFIG: JSON.stringify({
-      HOTJAR_TRACK_ID: process.env.CUSTOMER_REACT_APP_HOTJAR_TRACK_ID,
-      HOTJAR_VERSION: process.env.CUSTOMER_REACT_APP_HOTJAR_VERSION,
-      GOOGLE_OPTIMIZE_CONTAINER_ID: process.env.CUSTOMER_REACT_APP_GOOGLE_OPTIMIZE_CONTAINER_ID,
-      GOOGLE_TRACK_ID: process.env.CUSTOMER_REACT_APP_GOOGLE_TRACK_ID,
-      FACEBOOK_TRACK_ID: process.env.CUSTOMER_REACT_APP_FACEBOOK_TRACK_ID,
-      FB_APP_ID: process.env.CUSTOMER_REACT_APP_FB_APP_ID,
-      STRIPE_KEY: process.env.CUSTOMER_REACT_APP_STRIPE_KEY,
-      STRIPE_SECRET_KEY: process.env.CUSTOMER_REACT_APP_STRIPE_SECRET_KEY,
-      PAYPAL_SANBOX_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_SANBOX_ID,
-      PAYPAL_PRODUCTION_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_PRODUCTION_ID,
+      HOTJAR_TRACK_ID: '987050',
+      HOTJAR_VERSION: '6',
+      GOOGLE_OPTIMIZE_CONTAINER_ID: 'GTM-543J2FS',
+      GOOGLE_TRACK_ID: 'UA-79878595-4',
+      FACEBOOK_TRACK_ID: '309680483131713',
+      STRIPE_KEY: 'pk_test_QHwSBRXAbcgdgrHjI6WVM88B',
+      STRIPE_SECRET_KEY: 'sk_test_huciaEWexT3yYfYY0BzgLkKy',
+      FB_APP_ID: '1199034160165944',
+      PAYPAL_SANBOX_ID: 'AQ6p5mZNiTJIF13P3jG54Kl2ShBjK7uJ50-Tu0yM2-wQ4EgT2olEcjdaFCu5lANk4weufmUyEOiZ3teM',
     })
   };
 
