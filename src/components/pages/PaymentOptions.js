@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import ReactGA from "react-ga";
+import BlockUi from 'react-block-ui';
 import {
   Button,
   Col,
@@ -23,7 +24,8 @@ class PaymentOptions extends PureComponent {
     super(props);
     this.state = {
       paymentType: null,
-      messageSanction: ""
+      messageSanction: "",
+      loading: false
     };
     this.sanctionNameRef = null;
   }
@@ -35,17 +37,20 @@ class PaymentOptions extends PureComponent {
       label: "Check Button"
     });
     this.setState({
-      messageSanction: ""
+      messageSanction: "",
+      loading: true
     });
     sanctionCheck({surname: this.sanctionNameRef.value}).then(rp => {
       console.log(rp);
       this.setState({
-      	messageSanction: rp.data
+        messageSanction: rp.data,
+        loading: false
       });
     }).catch(e => {
       console.log(e);
       this.setState({
-        messageSanction: 'ERROR'
+        messageSanction: 'ERROR',
+        loading: false
       });
     });
   };
@@ -87,63 +92,65 @@ class PaymentOptions extends PureComponent {
   }
 
   render() {
-    const {paymentType, messageSanction} = this.state;
+    const {paymentType, messageSanction, loading} = this.state;
     return (
-      <Row>
-        <Col>
-          <Form>
-            <FormGroup row>
-              <Col>
-                <InputGroup>
-                  <input type="text" name="name"
-                         className="form-control"
-                         ref={input => this.sanctionNameRef = input}
-                         placeholder="Name"/>
-                  <InputGroupAddon addonType="append">
-                    <Button type="button" color="secondary" onClick={(e) => this.handleOnCheckClick(e)}>
-                      Check
-                    </Button>
-                  </InputGroupAddon>
-                </InputGroup>
-                <br/>
-                {messageSanction && (
-                  <Alert color="success" className="text-center">
-                    {messageSanction}
-                  </Alert>
-                )}
-              </Col>
-            </FormGroup>
-            <FormGroup>
-              <div className="paymenttype-wrapper">
-                <CustomInput
-                  type="radio"
-                  name="paymentType"
-                  style={{marginRight: 20}}
-                  id="paymentTypeCard"
-                  checked={paymentType === PAYMENT_TYPE.CARD}
-                  value={PAYMENT_TYPE.CARD}
-                  onChange={() => this.handleOnRadioChange(PAYMENT_TYPE.CARD)}
-                  label="Card"
-                />
-                <CustomInput
-                  type="radio"
-                  name="paymentType"
-                  value={PAYMENT_TYPE.PAYPAL}
-                  id="paymentTypePaypal"
-                  checked={paymentType === PAYMENT_TYPE.PAYPAL}
-                  onChange={() => this.handleOnRadioChange(PAYMENT_TYPE.PAYPAL)}
-                  label="Paypal"
-                />
+      <BlockUi tag="div" blocking={loading}>
+        <Row>
+          <Col>
+            <Form>
+              <FormGroup row>
+                <Col>
+                  <InputGroup>
+                    <input type="text" name="name"
+                           className="form-control"
+                           ref={input => this.sanctionNameRef = input}
+                           placeholder="Name"/>
+                    <InputGroupAddon addonType="append">
+                      <Button type="button" color="secondary" onClick={(e) => this.handleOnCheckClick(e)}>
+                        Check
+                      </Button>
+                    </InputGroupAddon>
+                  </InputGroup>
+                  <br/>
+                  {messageSanction && (
+                    <Alert color="success" className="text-center">
+                      {messageSanction}
+                    </Alert>
+                  )}
+                </Col>
+              </FormGroup>
+              <FormGroup>
+                <div className="paymenttype-wrapper">
+                  <CustomInput
+                    type="radio"
+                    name="paymentType"
+                    style={{marginRight: 20}}
+                    id="paymentTypeCard"
+                    checked={paymentType === PAYMENT_TYPE.CARD}
+                    value={PAYMENT_TYPE.CARD}
+                    onChange={() => this.handleOnRadioChange(PAYMENT_TYPE.CARD)}
+                    label="Card"
+                  />
+                  <CustomInput
+                    type="radio"
+                    name="paymentType"
+                    value={PAYMENT_TYPE.PAYPAL}
+                    id="paymentTypePaypal"
+                    checked={paymentType === PAYMENT_TYPE.PAYPAL}
+                    onChange={() => this.handleOnRadioChange(PAYMENT_TYPE.PAYPAL)}
+                    label="Paypal"
+                  />
+                </div>
+              </FormGroup>
+              <div style={{textAlign: "center"}}>
+                {/*{paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}*/}
               </div>
-            </FormGroup>
-            <div style={{textAlign: "center"}}>
-              {/*{paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}*/}
-            </div>
-            {paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}
-          </Form>
-        </Col>
-        <Footer to="/cards" showCookieMsg/>
-      </Row>
+              {paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}
+            </Form>
+          </Col>
+          <Footer to="/cards" showCookieMsg/>
+        </Row>
+      </BlockUi>
     );
   }
 }
