@@ -21,6 +21,8 @@ class Footer extends PureComponent {
         },
         "type": "opt-out"
       });
+    }else {
+
     }
   }
   render() {

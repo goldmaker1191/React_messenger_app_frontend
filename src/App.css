@@ -7,7 +7,7 @@
 }
 
 .footer .btn {
-    width: 200px !important;
+    width: 120px !important;
 }
 .footer a:hover {
     cursor: pointer;
@@ -30,5 +30,10 @@
 
 .paymenttype-wrapper > div {
     margin-right: 20px;
+}
+
+.cc-revoke.cc-bottom {
+    bottom: 0;
+    left: 0em !important;
 }
 

@@ -14,7 +14,7 @@ export default function withTracker(WrappedComponent, options = {}) {
     });
     ReactPixel.pageView(page);
     ReactGA.pageview(page);
-    if(window.hj) {
+    if (window.hj) {
       window.hj('stateChange', page);
     }
   };
@@ -23,6 +23,11 @@ export default function withTracker(WrappedComponent, options = {}) {
     componentDidMount() {
       const page = this.props.location.pathname;
       trackPage(page);
+      if (page === '/welcome' || page === '/') {
+        this.showCookieConsent(true);
+      } else {
+        this.showCookieConsent(false);
+      }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -31,6 +36,17 @@ export default function withTracker(WrappedComponent, options = {}) {
 
       if (currentPage !== nextPage) {
         trackPage(nextPage);
+      }
+    }
+
+    showCookieConsent(isShow) {
+      const $eles = document.querySelectorAll('.cc-revoke');
+      if ($eles && $eles.length) {
+        for (const e in $eles) {
+          if($eles[e].style) {
+            $eles[e].style.display = isShow ? 'block' : 'none';
+          }
+        }
       }
     }
 
