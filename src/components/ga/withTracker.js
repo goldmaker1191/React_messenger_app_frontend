@@ -14,7 +14,9 @@ export default function withTracker(WrappedComponent, options = {}) {
     });
     ReactPixel.pageView(page);
     ReactGA.pageview(page);
-    window.hj('stateChange', page);
+    if(window.hj) {
+      window.hj('stateChange', page);
+    }
   };
 
   const HOC = class extends Component {

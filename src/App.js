@@ -11,6 +11,7 @@ import {PaymentCards, PaymentOptions, PaymentSuccess, Welcome} from './component
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import withTracker from './components/ga/withTracker';
+
 import {FACEBOOK_TRACK_ID, GOOGLE_OPTIMIZE_CONTAINER_ID, GOOGLE_TRACK_ID} from "./constanst";
 
 export const rootReducer = combineReducers({
@@ -36,7 +37,9 @@ ReactGA.initialize({
   trackingId: GOOGLE_TRACK_ID,
   debug: false
 });
+
 ReactGA.ga('require', GOOGLE_OPTIMIZE_CONTAINER_ID);
+
 class App extends PureComponent {
   render() {
     return (

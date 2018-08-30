@@ -101,7 +101,8 @@ function getClientEnvironment(publicUrl) {
       PAYPAL_PRODUCTION_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_PRODUCTION_ID,
       SANCTION_USERNAME: process.env.CUSTOMER_REACT_APP_SANCTION_USERNAME,
       SANCTION_PASSWORD: process.env.CUSTOMER_REACT_APP_SANCTION_PASSWORD,
-      SANCTION_API_KEY: process.env.CUSTOMER_REACT_APP_SANCTION_API_KEY
+      SANCTION_API_KEY: process.env.CUSTOMER_REACT_APP_SANCTION_API_KEY,
+      PROXY_SERVER: process.env.PROXY_SERVER || 'http://localhost:5050'
     })
   };
   return { raw, stringified };
