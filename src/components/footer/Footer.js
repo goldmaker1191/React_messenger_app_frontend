@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import {Link} from "react-router-dom";
-import CookieConsent from 'react-cookie-consent';
 
 class Footer extends PureComponent {
   constructor(props) {
@@ -9,29 +8,28 @@ class Footer extends PureComponent {
       closeCookie: false
     }
   }
+  componentDidMount() {
+    if(window.cookieconsent && this.props.showCookieMsg) {
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#000"
+          },
+          "button": {
+            "background": "#f1d600"
+          }
+        },
+        "type": "opt-out"
+      });
+    }
+  }
   render() {
     const {
-      to, showCookieMsg
+      to
     } = this.props;
     return (
       <div className="footer">
         <Link to={to} className="btn btn-primary">Next</Link>
-        <br />
-        {showCookieMsg && <CookieConsent
-          location="bottom"
-          buttonText="Allow cookies"
-          cookieName="myAwesomeCookieName2"
-          style={{ background: "#2B373B", display: this.state.closeCookie ? "none": "flex" }}
-          buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-          expires={150}
-        >
-          This website uses cookies to ensure you get the best experience on our website
-          <a href="https://cookiesandyou.com/"> Learn more </a>
-          <a style={{float: 'right'}} onClick={() => this.setState({
-            closeCookie: true
-          })}> Decline </a>
-        </CookieConsent>}
-
       </div>
     );
   }

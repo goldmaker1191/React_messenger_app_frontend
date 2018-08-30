@@ -1,5 +1,5 @@
 import React from 'react';
-import {createCustomer} from '../stripe/stripeSerivce'
+import {createCustomer} from '../../appService'
 import {
   CardCVCElement,
   CardExpiryElement,
@@ -10,10 +10,6 @@ import {
 import './StripeForm.css';
 
 class PaymentStripeRequestForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleSubmit = (ev) => {
     ev.preventDefault();
     this.props.trackEvent({

@@ -99,6 +99,9 @@ function getClientEnvironment(publicUrl) {
       STRIPE_SECRET_KEY: process.env.CUSTOMER_REACT_APP_STRIPE_SECRET_KEY,
       PAYPAL_SANBOX_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_SANBOX_ID,
       PAYPAL_PRODUCTION_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_PRODUCTION_ID,
+      SANCTION_USERNAME: 'PlutoServices',
+      SANCTION_PASSWORD: 'Z4d@9x8K7vh4SXD5ad^fP&h^4o!%qX',
+      SANCTION_API_KEY: 'cb5c303b8558966add566477693ccfa5'
     })
   };
 
