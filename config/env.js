@@ -102,7 +102,7 @@ function getClientEnvironment(publicUrl) {
       SANCTION_USERNAME: process.env.CUSTOMER_REACT_APP_SANCTION_USERNAME,
       SANCTION_PASSWORD: process.env.CUSTOMER_REACT_APP_SANCTION_PASSWORD,
       SANCTION_API_KEY: process.env.CUSTOMER_REACT_APP_SANCTION_API_KEY,
-      PROXY_SERVER: process.env.PROXY_SERVER || 'http://localhost:5050'
+      SANCTION_API_URL: process.env.CUSTOMER_REACT_APP_SANCTION_API_URL || 'http://localhost:5050/sanctions-check'
     })
   };
   return { raw, stringified };

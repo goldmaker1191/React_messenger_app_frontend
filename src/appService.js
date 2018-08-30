@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SANCTION_API_KEY, SANCTION_PASSWORD, SANCTION_USERNAME, STRIPE_SECRET_KEY, PROXY_SERVER} from "./constanst";
+import {SANCTION_API_KEY, SANCTION_PASSWORD, SANCTION_USERNAME, SANCTION_API_URL, STRIPE_SECRET_KEY, PROXY_SERVER} from "./constanst";
 
 export const createCustomer = data => {
   return axios.post("https://api.stripe.com/v1/customers", queryParams(data), {
@@ -14,7 +14,7 @@ export const createCustomer = data => {
 export const sanctionCheck = ({surname}) => {
   const authEncoded = btoa(`${SANCTION_USERNAME}:${SANCTION_PASSWORD}`);
   return axios.post(
-    `${PROXY_SERVER}/sanctions-check`,
+    `${SANCTION_API_URL}`,
     queryParams({surname, forename: surname, api_string: SANCTION_API_KEY }),
     {
       headers: {
