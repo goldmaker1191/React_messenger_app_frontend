@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SANCTION_API_KEY, SANCTION_PASSWORD, SANCTION_USERNAME, SANCTION_API_URL, STRIPE_SECRET_KEY, PROXY_SERVER} from "./constanst";
+import {SANCTION_API_KEY, SANCTION_PASSWORD, SANCTION_USERNAME, SANCTION_API_URL, STRIPE_SECRET_KEY} from "./constanst";
 
 export const createCustomer = data => {
   return axios.post("https://api.stripe.com/v1/customers", queryParams(data), {
