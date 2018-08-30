@@ -18,6 +18,7 @@ import PaypalExpressBtn from "../paypal/PaypalButton";
 import PaymentCards from "./PaymentCards";
 import Footer from "../footer/Footer";
 import {sanctionCheck} from "../../appService";
+import 'react-block-ui/style.css';
 
 class PaymentOptions extends PureComponent {
   constructor(props) {
