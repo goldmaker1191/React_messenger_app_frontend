@@ -59,13 +59,11 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .map(folder => path.resolve(appDirectory, folder))
   .join(path.delimiter);
 
-// Grab NODE_ENV and CUSTOMER_REACT_APP_* environment variables and prepare them to be
+// Grab NODE_ENV and * environment variables and prepare them to be
 // injected into the application via DefinePlugin in Webpack configuration.
-const REACT_APP = /^CUSTOMER_REACT_APP_/i;
 
 function getClientEnvironment(publicUrl) {
   const raw = Object.keys(process.env)
-    .filter(key => REACT_APP.test(key))
     .reduce(
       (env, key) => {
         env[key] = process.env[key];
@@ -89,20 +87,20 @@ function getClientEnvironment(publicUrl) {
       return env;
     }, {}),
     CONFIG: JSON.stringify({
-      HOTJAR_TRACK_ID: process.env.CUSTOMER_REACT_APP_HOTJAR_TRACK_ID,
-      HOTJAR_VERSION: process.env.CUSTOMER_REACT_APP_HOTJAR_VERSION,
-      GOOGLE_OPTIMIZE_CONTAINER_ID: process.env.CUSTOMER_REACT_APP_GOOGLE_OPTIMIZE_CONTAINER_ID,
-      GOOGLE_TRACK_ID: process.env.CUSTOMER_REACT_APP_GOOGLE_TRACK_ID,
-      FACEBOOK_TRACK_ID: process.env.CUSTOMER_REACT_APP_FACEBOOK_TRACK_ID,
-      FB_APP_ID: process.env.CUSTOMER_REACT_APP_FB_APP_ID,
-      STRIPE_KEY: process.env.CUSTOMER_REACT_APP_STRIPE_KEY,
-      STRIPE_SECRET_KEY: process.env.CUSTOMER_REACT_APP_STRIPE_SECRET_KEY,
-      PAYPAL_SANBOX_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_SANBOX_ID,
-      PAYPAL_PRODUCTION_ID: process.env.CUSTOMER_REACT_APP_PAYPAL_PRODUCTION_ID,
-      SANCTION_USERNAME: process.env.CUSTOMER_REACT_APP_SANCTION_USERNAME,
-      SANCTION_PASSWORD: process.env.CUSTOMER_REACT_APP_SANCTION_PASSWORD,
-      SANCTION_API_KEY: process.env.CUSTOMER_REACT_APP_SANCTION_API_KEY,
-      SANCTION_API_URL: process.env.CUSTOMER_REACT_APP_SANCTION_API_URL || 'http://localhost:5050/sanctions-check'
+      HOTJAR_TRACK_ID: process.env.HOTJAR_TRACK_ID,
+      HOTJAR_VERSION: process.env.HOTJAR_VERSION,
+      GOOGLE_OPTIMIZE_CONTAINER_ID: process.env.GOOGLE_OPTIMIZE_CONTAINER_ID,
+      GOOGLE_TRACK_ID: process.env.GOOGLE_TRACK_ID,
+      FACEBOOK_TRACK_ID: process.env.FACEBOOK_TRACK_ID,
+      FB_APP_ID: process.env.FACEBOOK_APP_ID,
+      STRIPE_KEY: process.env.STRIPE_KEY,
+      STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+      PAYPAL_SANBOX_ID: process.env.PAYPAL_SANBOX_ID,
+      PAYPAL_PRODUCTION_ID: process.env.PAYPAL_PRODUCTION_ID,
+      SANCTION_USERNAME: process.env.SANCTION_USERNAME,
+      SANCTION_PASSWORD: process.env.SANCTION_PASSWORD,
+      SANCTION_API_KEY: process.env.SANCTION_API_KEY,
+      SANCTION_API_URL: process.env.SANCTION_API_URL || 'http://localhost:5050/sanctions-check'
     })
   };
   return { raw, stringified };

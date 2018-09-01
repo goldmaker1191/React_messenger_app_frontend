@@ -103,6 +103,9 @@ class PaymentOptions extends PureComponent {
                 <Col>
                   <InputGroup>
                     <input type="text" name="name"
+                           onKeyPress={(e) => {
+                             if (e.which === 13) e.preventDefault()
+                           }}
                            className="form-control"
                            ref={input => this.sanctionNameRef = input}
                            placeholder="Name"/>
@@ -146,7 +149,10 @@ class PaymentOptions extends PureComponent {
               <div style={{textAlign: "center"}}>
                 {/*{paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}*/}
               </div>
-              {paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}
+              {/*{paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}*/}
+              <div className="text-center">
+                <button className="btn btn-primary"> Payment Request </button>
+              </div>
             </Form>
           </Col>
           <Footer to="/cards" showCookieMsg/>

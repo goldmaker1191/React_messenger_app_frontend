@@ -19,10 +19,7 @@ class Footer extends PureComponent {
             "background": "#f1d600"
           }
         },
-        "type": "opt-out"
       });
-    }else {
-
     }
   }
   render() {
