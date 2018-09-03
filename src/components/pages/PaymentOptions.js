@@ -147,7 +147,7 @@ class PaymentOptions extends PureComponent {
                 </div>
               </FormGroup>
               <div style={{textAlign: "center"}}>
-                {/*{paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}*/}
+                {paymentType === PAYMENT_TYPE.PAYPAL && this.renderBtnPaypal()}
               </div>
               {/*{paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}*/}
               <div className="text-center">

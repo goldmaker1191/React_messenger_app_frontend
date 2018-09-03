@@ -100,7 +100,10 @@ function getClientEnvironment(publicUrl) {
       SANCTION_USERNAME: process.env.SANCTION_USERNAME,
       SANCTION_PASSWORD: process.env.SANCTION_PASSWORD,
       SANCTION_API_KEY: process.env.SANCTION_API_KEY,
-      SANCTION_API_URL: process.env.SANCTION_API_URL || 'http://localhost:5050/sanctions-check'
+      SANCTION_API_URL: process.env.SANCTION_API_URL || 'http://localhost:5050/sanctions-check',
+      PAYPAL_ENV: process.env.PAYPAL_ENV || 'sandbox',
+      PAYPAL_PAYMENT_API: process.env.PAYPAL_PAYMENT_API,
+      PAYPAL_AUTHORIZE_API: process.env.PAYPAL_AUTHORIZE_API
     })
   };
   return { raw, stringified };
