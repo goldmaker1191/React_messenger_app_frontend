@@ -10,6 +10,9 @@ import {
 import './StripeForm.css';
 
 class PaymentStripeRequestForm extends React.Component {
+  componentDidMount() {
+    console.log(this.cardNumberRef);
+  }
   handleSubmit = (ev) => {
     ev.preventDefault();
     this.props.trackEvent({
@@ -82,6 +85,8 @@ class PaymentStripeRequestForm extends React.Component {
         <label>
           Card number
           <CardNumberElement
+            token="tok_gb"
+            placeholder="4000 0082 6000 0000"
             ref={cardNumberNode => this.cardNumberRef = cardNumberNode}
             {...this.createOptions(this.props.fontSize)}
           />
@@ -101,6 +106,7 @@ class PaymentStripeRequestForm extends React.Component {
         <label>
           Postal code
           <PostalCodeElement
+            placeholder="WS11 1DB"
             {...this.createOptions(this.props.fontSize)}
           />
         </label>

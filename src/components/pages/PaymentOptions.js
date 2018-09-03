@@ -19,6 +19,7 @@ import PaymentCards from "./PaymentCards";
 import Footer from "../footer/Footer";
 import {sanctionCheck} from "../../appService";
 import 'react-block-ui/style.css';
+import PaymentRequestForm from '../stripe/PaymentRequestForm'
 
 class PaymentOptions extends PureComponent {
   constructor(props) {
@@ -151,7 +152,8 @@ class PaymentOptions extends PureComponent {
               </div>
               {/*{paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}*/}
               <div className="text-center">
-                <button className="btn btn-primary"> Payment Request </button>
+                {/*<button className="btn btn-primary"> Payment Request </button>*/}
+                <PaymentRequestForm />
               </div>
             </Form>
           </Col>
