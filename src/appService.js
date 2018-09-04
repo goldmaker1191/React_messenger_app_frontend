@@ -11,6 +11,16 @@ export const createCustomer = data => {
   });
 };
 
+export const charges = data => {
+  return axios.post("https://api.stripe.com/v1/charges", queryParams(data), {
+    headers: {
+      Authorization: `Bearer ${STRIPE_SECRET_KEY}`,
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      Accept: "application/json"
+    }
+  });
+};
+
 export const sanctionCheck = ({surname}) => {
   const authEncoded = btoa(`${SANCTION_USERNAME}:${SANCTION_PASSWORD}`);
   return axios.post(

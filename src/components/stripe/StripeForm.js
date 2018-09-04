@@ -1,5 +1,5 @@
 import React from 'react';
-import {createCustomer} from '../../appService'
+import {charges, createCustomer} from '../../appService'
 import {
   CardCVCElement,
   CardExpiryElement,
@@ -8,11 +8,17 @@ import {
   PostalCodeElement
 } from 'react-stripe-elements';
 import './StripeForm.css';
+import {CHARGE_AMOUNT} from "../../constanst";
+import 'react-block-ui/style.css';
 
 class PaymentStripeRequestForm extends React.Component {
-  componentDidMount() {
-    console.log(this.cardNumberRef);
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false
+    };
   }
+
   handleSubmit = (ev) => {
     ev.preventDefault();
     this.props.trackEvent({
@@ -29,16 +35,40 @@ class PaymentStripeRequestForm extends React.Component {
         .then((payload) => {
           if (!payload.error) {
             const {card} = payload.token;
-            const customerData = {
-              'metadata[data]': JSON.stringify(card),
-              description: `Customer for ${card.name || payload.token.client_ip}`,
-            };
-            createCustomer(customerData).then(rp => {
-              console.log(rp);
-              window.location.href = '/success';
-            }).catch(err => {
-              console.log(err);
-            })
+            stripeService.createSource({
+              type: 'card',
+              cardNumber: card.cardNumber,
+              cardExpiry: card.cardExpiry,
+              cardCvc: card.cardCvc,
+            }).then(function (sourceResult) {
+              if (sourceResult.error) {
+                document.getElementById('charge-error-message').innerHTML = sourceResult.error.message;
+              } else {
+                const customerData = {
+                  'metadata[data]': JSON.stringify(card),
+                  description: `Customer for ${card.name || payload.token.client_ip}`,
+                };
+                createCustomer(customerData).then(customerRp => {
+                  charges({
+                    currency: 'gbp',
+                    amount: CHARGE_AMOUNT,
+                    customer: customerRp.data.id,
+                    source: sourceResult.source.id,
+                  }).then((rp) => {
+                    console.log('charges rp', rp);
+                    if (rp.error) {
+                      document.getElementById('charge-error-message').innerHTML = rp.error.message;
+                    } else {
+                      window.location.href = '/success';
+                    }
+                  }).catch(err => {
+                    document.getElementById('charge-error-message').innerHTML = err.response.data.error.message;
+                  })
+                }).catch(err => {
+                  document.getElementById('charge-error-message').innerHTML = err;
+                })
+              }
+            });
           }
         });
     } else {
@@ -81,7 +111,7 @@ class PaymentStripeRequestForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={(ev) => this.handleSubmit(ev)}>
         <label>
           Card number
           <CardNumberElement
@@ -111,7 +141,9 @@ class PaymentStripeRequestForm extends React.Component {
           />
         </label>
         <div className="action">
-          <button>Payment Request</button>
+          <p id="charge-error-message"></p>
+          <br/>
+          <button>Pay £{CHARGE_AMOUNT} </button>
         </div>
       </form>
     )

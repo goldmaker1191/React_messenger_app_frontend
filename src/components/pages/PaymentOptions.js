@@ -1,21 +1,9 @@
 import React, {PureComponent} from "react";
 import ReactGA from "react-ga";
 import BlockUi from 'react-block-ui';
-import {
-  Button,
-  Col,
-  CustomInput,
-  Form,
-  FormGroup,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Row,
-  Alert
-} from "reactstrap";
+import {Alert, Button, Col, CustomInput, Form, FormGroup, InputGroup, InputGroupAddon, Row} from "reactstrap";
 import {PAYMENT_TYPE} from "../../constanst";
 import PaypalExpressBtn from "../paypal/PaypalButton";
-import PaymentCards from "./PaymentCards";
 import Footer from "../footer/Footer";
 import {sanctionCheck} from "../../appService";
 import 'react-block-ui/style.css';
@@ -153,7 +141,7 @@ class PaymentOptions extends PureComponent {
               {/*{paymentType === PAYMENT_TYPE.CARD && <PaymentCards {...this.props} />}*/}
               <div className="text-center">
                 {/*<button className="btn btn-primary"> Payment Request </button>*/}
-                <PaymentRequestForm />
+                <PaymentRequestForm/>
               </div>
             </Form>
           </Col>

@@ -90,3 +90,7 @@
 .StripeElement.PaymentRequestButton {
     padding: 0;
 }
+
+.payment-cards #charge-error-message {
+    color: red;
+}
